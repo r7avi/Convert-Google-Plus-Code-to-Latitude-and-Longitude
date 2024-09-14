@@ -6,7 +6,7 @@ This Python script is designed to take a CSV file as input, extract the Plus Cod
 ## Requirements
 ---------------
 
-*   **Python 3.x**: This script uses various libraries that are compatible with Python 3.x.
+*   **Python 3.x**: This script uses various libraries that are compatible with Python 3.x. (Suggesred : Python 3.10)
 *   **pandas**: A library for data manipulation and analysis.
 *   **requests**: A library for making HTTP requests to the Google Maps API.
 *   **openpyxl**: A library for reading and writing Excel files.
