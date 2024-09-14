@@ -12,6 +12,10 @@ This Python script is designed to take a CSV file as input, extract the Plus Cod
 *   **openpyxl**: A library for reading and writing Excel files.
 *   **tqdm**: A library for displaying a progress bar during Plus Code geocoding.
 
+```python
+pip install pandas openpyxl requests tk tqdm
+```
+
 ## Usage
 ------
 
