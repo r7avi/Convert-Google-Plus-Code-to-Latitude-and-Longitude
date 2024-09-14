@@ -70,7 +70,7 @@ The script will save the resulting DataFrame in the chosen format.
 
 ### Example Use Case
 
-Suppose you have a CSV/XLSX file `input.csv or input.xlsx` containing Plus Codes Coloumn, and you want to geocode them using the Google Maps API and save the result as an CSV / XLSX file:
+Suppose you have a CSV / XLSX file `input.csv or input.xlsx` containing Plus Codes Coloumn, and you want to geocode them using the Google Maps API and save the result as an CSV / XLSX file:
 
 ```bash
 python run.py
