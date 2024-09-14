@@ -1,4 +1,3 @@
-```markdown
 # Plus Code Geocoder with Google Maps API
 ======================================================
 
