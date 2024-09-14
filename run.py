@@ -38,20 +38,27 @@ def adjust_column_width(output_file_path):
 # Ask for the API key (set manually in your case)
 api_key = "YOUR_GOOGLE_MAPS_API_KEY"
 
-# Step 1: Ask user for the CSV file using a file dialog
+# Step 1: Ask user for the CSV or XLSX file using a file dialog
 root = Tk()
 root.withdraw()  # Hide the main Tkinter window
 input_file_path = askopenfilename(
-    title="Select CSV file",
-    filetypes=[("CSV files", "*.csv")]
+    title="Select CSV or XLSX file",
+    filetypes=[("CSV files", "*.csv"), ("Excel files", "*.xlsx")] 
 )
 
 if not input_file_path:
     print("No file selected. Exiting.")
     exit()
 
-# Step 2: Read CSV file into DataFrame
-df = pd.read_csv(input_file_path)
+# Step 2: Read the input file into DataFrame based on its extension
+file_extension = os.path.splitext(input_file_path)[1].lower()
+
+if file_extension == '.csv':
+    df = pd.read_csv(input_file_path)
+elif file_extension == '.xlsx':
+    df = pd.read_excel(input_file_path)
+else:
+    raise Exception("Unsupported file format. Please select a CSV or XLSX file.")
 
 # Step 3: Find the Plus Code column (adjust as needed)
 plus_code_column = None
@@ -68,7 +75,8 @@ latitudes = []
 longitudes = []
 
 # Initialize progress bar using tqdm
-for plus_code in tqdm(df[plus_code_column], desc="Converting Plus Codes", unit="code"):
+for index, row in tqdm(df.iterrows(), desc="Converting Plus Codes", unit="code", total=len(df)):
+    plus_code = row[plus_code_column]
     lat, lng = get_lat_lng_from_plus_code(plus_code, api_key)
     latitudes.append(lat)
     longitudes.append(lng)
